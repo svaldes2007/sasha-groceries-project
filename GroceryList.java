@@ -1,9 +1,18 @@
 //import java.util.Map;
 
-public class GroceryList {
+public class GroceryList extends Node{
     // attributes 
+    private Node head;
 
-    // constructor 
+    // constructors 
+
+    public GroceryList(){
+        head = null;
+    }
+
+    public GroceryList(Node head){
+        this.head = head;
+    }
 
     // void add(String item)
 
