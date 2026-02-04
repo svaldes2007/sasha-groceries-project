@@ -17,4 +17,12 @@ public class Node {
         this.data = data;
         this.next = next;
     }
+
+    public String getData(){
+        return this.data;
+    }
+
+    public Node getNext(){
+        return this.next;
+    }
 }

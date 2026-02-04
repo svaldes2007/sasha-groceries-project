@@ -1,3 +1,5 @@
 "milk" 4.99
 "eggs" 3.78
 "bread" 2.99
+"cheese" 4.89
+"strawberries" 6:19
