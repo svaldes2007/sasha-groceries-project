@@ -100,6 +100,10 @@ public class GroceryList extends Node{
             //call getGroceryList
             Map <String, Double> groceryList = this.getGroceryMap();
 
+            //if the list is empty, print this message
+            if (groceryList.size() == 0){
+                return "Nothing on your list.";
+            }
             //ittorate through + add items to toRet
             for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
                 String item = entry.getKey();
@@ -172,6 +176,30 @@ public class GroceryList extends Node{
         return totalCost;
     }
 
-    
+    //pethod clears the list
+    public void clear() {
+        head = null;
+    }
+
+    //gets most expensive item
+    public String mostExpensive() throws FileNotFoundException {
+        //use getGroceryMap to get map of all groceries
+        Map <String, Double> groceries = getGroceryMap();
+        //string to store name of most expensie item
+        String expensive = "";
+        double maxPrice = 0;
+
+        //ittorate through map
+        for (Map.Entry<String, Double> entry : groceries.entrySet()) {
+            //if an items price is higher than maxPrice, update maxPrice and set expensive to the name of the item
+            if (entry.getValue() > maxPrice) {
+                maxPrice = entry.getValue();
+                expensive = entry.getKey();
+            }
+        }
+        //return string with the name of the item
+        return expensive;
+    }
+        
 }
 
