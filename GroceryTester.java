@@ -6,8 +6,9 @@ public class GroceryTester {
         GroceryList valdesFamily = new GroceryList(head);
         valdesFamily.add("cheese");
         valdesFamily.add("eggs");
-
+        System.out.println(valdesFamily);
         valdesFamily.getGroceryMap();
+        //System.out.println(valdesFamily);
 
     
     }

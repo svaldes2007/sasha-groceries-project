@@ -2,4 +2,17 @@
 "eggs" 3.78
 "bread" 2.99
 "cheese" 4.89
-"strawberries" 6:19
+"strawberries" 6.19
+"sugar" 2.39
+"flour" 2.78
+"olive oil" 12.74
+"salt" 1.99
+"lettuce" 2.49
+"ketchup" 2.49
+"mustard" 3.19
+"chicken" 4.39
+"ground beef" 4.79
+"steak" 8.49
+"turkey" 4.19
+"broccoli" 2.19
+"cookies" 3.99
