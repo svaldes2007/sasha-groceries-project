@@ -25,7 +25,7 @@ public class GroceryList extends Node{
         if (head == null){
             head = incoming;
         } else {
-            //otherwise, ittorate through to the end of the list
+            //otherwise, iterate through to the end of the list
             Node curr = head;
             while (curr.next != null){
                 curr = curr.next;
@@ -46,7 +46,7 @@ public class GroceryList extends Node{
             incoming.next = head;
             head = incoming; 
         } else if (index <= this.size() && index >= 0){
-            //if vaild index, ittorate through to find the node before the index you want to add a node at
+            //if vaild index, iterate through to find the node before the index you want to add a node at
             Node curr = head;
             for (int i = 0; i < index-1; i++){
                 if (curr.next != null){
@@ -66,7 +66,7 @@ public class GroceryList extends Node{
     public int size(){
         int count = 0;
         Node curr = head;
-        //ittorate through and increment count
+        //iterate through and increment count
         while (curr != null){
             count++;
             curr = curr.getNext();
@@ -84,7 +84,7 @@ public class GroceryList extends Node{
             } else {
                 Node curr = head;
                 for (int i = 0; i < idx-1; i++){
-                    //otherwise, ittorate thru until you find the node before the one you want to remove
+                    //otherwise, iterate through until you find the node before the one you want to remove
                     curr = curr.next;
                 }
                 //set previous element to next one -> skips middle one (leapfrog)
@@ -104,7 +104,7 @@ public class GroceryList extends Node{
             if (groceryList.size() == 0){
                 return "Nothing on your list.";
             }
-            //ittorate through + add items to toRet
+            //iterate through + add items to toRet
             for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
                 String item = entry.getKey();
                 double price = entry.getValue();
@@ -161,7 +161,7 @@ public class GroceryList extends Node{
             //call getGroceryList
             Map <String, Double> groceryList = this.getGroceryMap();
 
-            //ittorate through and add prices to totalCost
+            //iterate through and add prices to totalCost
             for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
                 double price = entry.getValue();
                 totalCost += price;
@@ -176,20 +176,15 @@ public class GroceryList extends Node{
         return totalCost;
     }
 
-    //pethod clears the list
-    public void clear() {
-        head = null;
-    }
-
-    //gets most expensive item
-    public String mostExpensive() throws FileNotFoundException {
+    //removes most expensive item and returns its name
+    public String removeMostExpensive() throws FileNotFoundException {
         //use getGroceryMap to get map of all groceries
         Map <String, Double> groceries = getGroceryMap();
         //string to store name of most expensie item
         String expensive = "";
         double maxPrice = 0;
 
-        //ittorate through map
+        //iterate through map
         for (Map.Entry<String, Double> entry : groceries.entrySet()) {
             //if an items price is higher than maxPrice, update maxPrice and set expensive to the name of the item
             if (entry.getValue() > maxPrice) {
@@ -197,6 +192,21 @@ public class GroceryList extends Node{
                 expensive = entry.getKey();
             }
         }
+
+        //iterate through list to find the index of the most expensive item 
+        Node curr = this.head;
+        int index = 0;
+
+        while (curr.next != null){
+            if (curr.data == data){
+                break;
+            }
+            index++;
+            curr = curr.next;
+        }
+        //remove node at that index
+        this.remove(index);
+
         //return string with the name of the item
         return expensive;
     }

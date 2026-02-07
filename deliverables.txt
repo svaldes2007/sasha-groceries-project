@@ -1,0 +1,12 @@
+1. I created an additional method called public String removeMostExpensive(). It removes the most expensive item in a family’s grocery list and returns its name. 
+This helps the user lower the cost of their grocery bill if it’s over their budget by removing the fewest items possible. It works by iterating through the map 
+which is returned by getGroceryMap() to identify the most expensive item. This is accomplished by comparing temporary variables representing the item’s name and 
+price to each other during each iteration. The name of the most expensive item is saved to a String variable and then later returned. Then, it iterates through 
+the GroceryList to and increments a local variable called index to find the index of the most expensive item in the list. Once the index is identified, the method 
+public void remove(int idx) is called to remove the most expensive item from the list. 
+
+2. Currently, the program does not have a user interface which makes it difficult to use for people who don’t know how to code in java. All of the feedback that 
+the user gets is in the terminal which is not very aesthetically pleasing. I would improve this aspect of the program by creating a user interface using JavaScript 
+React so that I could create aesthetic graphics and a clear and simple interactive user interface.
+
+3. My diagram is in PDF format in a file called Diagram.pdf. :)

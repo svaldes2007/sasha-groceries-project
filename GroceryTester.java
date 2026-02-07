@@ -6,42 +6,39 @@ public class GroceryTester {
         Node head = new Node("strawberries");
 
         //test GroceryList constructors
-        GroceryList valdesFamily = new GroceryList(head);
-        GroceryList pomboFamily = new GroceryList();
+        GroceryList pomboFamily = new GroceryList(head);
+        GroceryList valdesFamily = new GroceryList();
 
         //test add and remove methods
-        valdesFamily.add("cheese");
-        valdesFamily.add("eggs");
-        valdesFamily.add("chicken", 1);
+        pomboFamily.add("cheese");
+        pomboFamily.add("eggs");
+        pomboFamily.add("chicken", 1);
 
-        pomboFamily.add("ground beef");
-        pomboFamily.add("bread");
-        pomboFamily.add("olive oil");
-        pomboFamily.add("mustard", 2);
-        pomboFamily.remove(1);
+        valdesFamily.add("ground beef");
+        valdesFamily.add("bread");
+        valdesFamily.add("olive oil");
+        valdesFamily.add("mustard", 2);
+        valdesFamily.remove(1);
 
         // test toString 
-        System.out.println("Valdes Family gorcery list:");
-        System.out.println(valdesFamily.toString());
         System.out.println("Pombo Family gorcery list:");
         System.out.println(pomboFamily.toString());
-        
-        //test size
-        System.out.println("Valdes size: " + valdesFamily.size());
-
-        //test cost
-        System.out.println("Pombo cost: " + pomboFamily.getCost());
-
-        //test clear
-        System.out.println();
-        valdesFamily.clear();
         System.out.println("Valdes Family gorcery list:");
         System.out.println(valdesFamily.toString());
+        
+        //test size
+        System.out.println("Pombo list size: " + pomboFamily.size());
+
+        //test cost
+        System.out.println("Valdes cost: " + valdesFamily.getCost());
 
         //test mostExpensive 
         System.out.println();
-        System.out.println("Pombo's most expensve item: " + pomboFamily.mostExpensive());
-        
+        System.out.println("Valdes's most expensive item: " + valdesFamily.removeMostExpensive());
+        System.out.println();
+        System.out.println("Valdes Family gorcery list:");
+        System.out.println(valdesFamily.toString());
+        System.out.println("New Valdes cost: " + valdesFamily.getCost());
     
     }
 }
