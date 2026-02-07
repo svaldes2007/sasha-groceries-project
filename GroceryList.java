@@ -9,7 +9,6 @@ public class GroceryList extends Node{
     private Node head;
 
     // constructors 
-
     public GroceryList(){
         head = null;
     }
@@ -20,11 +19,11 @@ public class GroceryList extends Node{
 
     //methods 
 
-    public void add( String data){
+    public void add(String data){
         Node incoming = new Node(data);
-        //if the list is empty, set the new node’s next to the current head so it points to the existing list
+        //if the list is empty, set head to the new node
         if (head == null){
-            incoming.next = head;
+            head = incoming;
         } else {
             //otherwise, ittorate through to the end of the list
             Node curr = head;
@@ -36,16 +35,16 @@ public class GroceryList extends Node{
         }
     }
 
-    public void add( String data, int index){
+    public void add(String data, int index){
         Node incoming = new Node(data);
 
-        //if the list is empty, set the new node’s next to the current head so it points to the existing list
+        //if the list is empty, set head to the new node
         if (head == null){
-            incoming.next = head;
+            head = incoming;
         } else if (index == 0){
             //if adding at zero, set the incoming data to the head
-            head = incoming;
             incoming.next = head;
+            head = incoming; 
         } else if (index <= this.size() && index >= 0){
             //if vaild index, ittorate through to find the node before the index you want to add a node at
             Node curr = head;
@@ -105,8 +104,6 @@ public class GroceryList extends Node{
             }
             //ittorate through list of gorcery items
             curr = curr.next;
-            //if not, return false
-            return false;
         }
         //return false if list is empty
         return false;
@@ -159,7 +156,28 @@ public class GroceryList extends Node{
         return groceries;
     }
 
-    // double getCost()
+    public double getCost(){
+        //stores total cost of trip
+        double totalCost = 0;
+
+        try {
+            //call getGroceryList
+            Map <String, Double> groceryList = this.getGroceryMap();
+
+            //ittorate through and add prices to totalCost
+            for (Map.Entry<String, Double> entry : groceryList.entrySet()) {
+                double price = entry.getValue();
+                totalCost += price;
+            }
+
+        } catch (FileNotFoundException e) {
+            // handle error
+            System.out.println("Error: grocery file not found.");
+            return -1;
+        }
+
+        return totalCost;
+    }
 
     
 }
