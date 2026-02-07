@@ -1,7 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class GroceryList extends Node{
@@ -92,22 +92,6 @@ public class GroceryList extends Node{
             }
         }
     }
-
-    //helper method to check if an item is in the grocery list
-    public boolean inList(String data){
-        Node curr = head;
-
-        while (curr != null){
-            //if theres a match, return true
-            if (curr.data.equals(data)){
-                return true;
-            }
-            //ittorate through list of gorcery items
-            curr = curr.next;
-        }
-        //return false if list is empty
-        return false;
-    }
     
     public String toString(){
         String toRet = "";
@@ -134,25 +118,34 @@ public class GroceryList extends Node{
     }
 
     public Map<String, Double> getGroceryMap() throws FileNotFoundException {
-        //initialize map
-        Map <String, Double> groceries = new HashMap<>();
+        //using LinkedHashMap to preserve order
+        //initialize map to hold groceries
+        Map <String, Double> groceries = new LinkedHashMap<>();
 
         //access data
         File f = new File("/Users/svaldes/Desktop/cs stuff container/sasha-groceries-project/grocery-items.txt");
         Scanner s = new Scanner(f);
 
-        //itterate thru file
-        while (s.hasNextLine()){
-            String [] tempList = s.nextLine().split("\"");
-            //the first item in tempList is null becuase we're using " to seperate items but each item starts with a ", so im skipping it
+        //itterate through file and make a local map var
+        Map<String, Double> fileMap = new LinkedHashMap<>();
+        while (s.hasNextLine()) {
+            String[] tempList = s.nextLine().split("\"");
             String item = tempList[1];
             double price = Double.parseDouble(tempList[2]);
-            //if the item is in the grocery list, add it to the map
-            if (this.inList(item)){
-                groceries.put(item, price);
-            }
+            fileMap.put(item, price);
         }
         s.close();
+
+        //itterate thru gorceryList
+        Node curr = head;
+        while (curr != null) {
+            if (fileMap.containsKey(curr.getData())) {
+                groceries.put(curr.getData(), fileMap.get(curr.getData()));
+            }
+            curr = curr.next;
+        }
+
+        //return grocereies map
         return groceries;
     }
 
