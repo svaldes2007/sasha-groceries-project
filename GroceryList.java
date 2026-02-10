@@ -112,6 +112,8 @@ public class GroceryList extends Node{
                 toRet = toRet + item + " " + price + "\n";
             }
 
+            toRet = toRet + "Total cost: " +this.getCost();
+
         } catch (FileNotFoundException e) {
             // handle error
             return "Error: grocery file not found.";

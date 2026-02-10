@@ -29,16 +29,12 @@ public class GroceryTester {
         //test size
         System.out.println("Pombo list size: " + pomboFamily.size());
 
-        //test cost
-        System.out.println("Valdes cost: " + valdesFamily.getCost());
-
         //test mostExpensive 
         System.out.println();
         System.out.println("Valdes's most expensive item: " + valdesFamily.removeMostExpensive());
         System.out.println();
         System.out.println("Valdes Family gorcery list:");
         System.out.println(valdesFamily.toString());
-        System.out.println("New Valdes cost: " + valdesFamily.getCost());
     
     }
 }
